@@ -1,14 +1,36 @@
 FROM python:3.12.0
 
-WORKDIR /usr/scr/app
+WORKDIR /app
+
+COPY . /app 
 
 ADD requirement.txt .
 ADD movies.txt .
 
-#copy the current directory contents into the container at /usr/src/app
+COPY watch_next.py . 
+
+EXPOSE 80
+
+#copy the current directory contents into the container
 COPY . .
 
 RUN Python3 -m pip install requirement.txt
 
 
 CMD ["python", "watch_next.py"] 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
